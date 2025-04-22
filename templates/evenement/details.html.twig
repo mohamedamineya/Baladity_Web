@@ -1,0 +1,73 @@
+{% extends 'base-back.html.twig' %}
+
+{% block title %}Détails de l'Événement{% endblock %}
+
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Nom</h5>
+                        <p class="card-text">
+                            <h6>{{ evenement.getNomE() }}</h6>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Date de début</h5>
+                        <p class="card-text">
+                            <h6>{{ evenement.getDateDHE()|date('d/m/Y') }}</h6>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Date de fin</h5>
+                        <p class="card-text">
+                            <h6>{{ evenement.getDateDHF()|date('d/m/Y') }}</h6>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Capacité</h5>
+                        <p class="card-text">
+                            <h6>{{ evenement.getCapaciteE() }}</h6>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <h5 class="card-title text-primary">Catégorie</h5>
+                        <p class="card-text">
+                            <h6>{{ evenement.getCategorieE() }}</h6>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Add other event details here -->
+            </div>
+
+            <div class="col-md-6">
+                <div class="card shadow-sm">
+                    {% block evenement_image %}
+                        {% if evenement.getImageEvent() %}
+                            <img src="{{ asset('uploads/' ~ evenement.getImageEvent()) }}" class="card-img-top" alt="Image de l'événement">
+                        {% else %}
+                            <div class="card-body">
+                                <p class="card-text text-muted mt-3">Aucune image disponible</p>
+                            </div>
+                        {% endif %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,237 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Baladity Home{% endblock %}
+{% block barreTitre %}
+{% if 'Citoyen' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('evenement_listCitoyen') }}">Evénement</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Responsable employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class="active"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+							<li><a href="{{ path('statsF') }}">Statistiques des evenements</a></li>
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					 <li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Evénement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listCitoyen') }}">liste des Evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter proposition</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_front') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% elseif 'Directeur' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}">Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#" class="active"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('afficherReclamationFA') }}">les Réclamations</a></li>
+							<li><a href="{{ path('statsReclamationF') }}">Statistiques des Réclamations</a></li>
+							<li><a href="{{ path('chatbot') }}">Chat for help</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class="active"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+							<li><a href="{{ path('statsF') }}">Statistiques des evenements</a></li>
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listdir') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% endif %}
+
+					
+{% endblock %}
+	{% block imagegpt %} 
+	{% endblock %} 
+{% block body %}
+
+{% endblock %}
+{% block rest %}
+
+<div class="breadcrumbs">
+  <div class="page-header d-flex align-items-center" style="background-image: url('{{ asset('images/1698797913755.jfif') }}');">
+    <div class="container position-relative">
+      <div class="row d-flex justify-content-center">
+        <div class="col-lg-6 text-center">
+          <h2>Reclamation</h2>
+          <p>Une réclamation dans une municipalité est comme un signal que vous envoyez à votre mairie, comme un trou dans la route, des poubelles qui débordent, ou un lampadaire cassé. En signalant ces problèmes, vous aidez la mairie à les résoudre et à rendre votre quartier plus agréable pour tout le monde.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <nav>
+    <div class="container">
+      <ol>
+        <li><a href="{{path('app_main_front')}}">Home</a></li>
+        <li>Reclamation</li>
+      </ol>
+    </div>
+  </nav>
+</div>
+
+<section id="service" class="services pt-0">
+
+    <div class="container aos-init aos-animate" data-aos="fade-up">
+        <div class="section-header">
+            <span>Les Réclamations</span>
+            <h2>Les Réclamations</h2>
+        </div>
+<!-- Image de filtrage -->
+<div class="row mb-4">
+    <div class="col-lg-12 d-flex justify-content-end align-items-center">
+        Filtrer par date :
+        <a href="#" id="filtre-tous">
+            <img src="{{ asset('images/filter.png') }}" alt="Filtrer" class="img-fluid" style="width: 35px; height: 35px;">
+        </a>
+    </div>
+</div>
+
+
+        <div class="row gy-4">
+            {% if reclamations is not empty %}
+                {% for reclamation in reclamations %}
+                    <div class="col-lg-4 col-md-6 aos-init aos-animate" data-aos="fade-up"
+                         data-aos-delay="{{ loop.index * 100 }}">
+                        
+                            <div class="card">
+                                <div class="card-img">
+                                <a href="{{ path('detailReclamationF', {'id': reclamation.getIdReclamation()}) }}"
+                           class="stretched-link" style="text-decoration: none; color: inherit;">
+                                    <img src="{{ asset('uploads/' ~ reclamation.getImageReclamation()) }}" alt=""
+                                         class="img-fluid"
+                                         style="width: 300px; height: 200px; object-fit: cover;">
+                                         {% if reclamation.getStatusReclamation() == 'traité' %}
+                                         <img src="{{ asset('images/done.png') }}" alt="Traité" class="traité-badge"
+                                              style="position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; ">
+                                              {% elseif reclamation.getStatusReclamation() == 'en cours' %}
+                                              <img src="{{ asset('images/encours.png') }}" alt="Traité" class="traité-badge"
+                                              style="position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; ">                                          
+                                             {% elseif reclamation.getStatusReclamation() == 'non traité' %}
+                                             <img src="{{ asset('images/cancel.png') }}" alt="Traité" class="traité-badge"
+                                             style="position: absolute; top: 10px; right: 10px; width: 20px; height: 20px; ">                                          
+                                          {% endif %}
+                                </div>
+                                <h3>
+                                <a href="{{ path('detailReclamationFA', {'id': reclamation.getIdReclamation()}) }}"
+                                class="stretched-link">{{ reclamation.getSujetReclamation() }}</a> 
+                               </h3>
+                                <p>{{ reclamation.getDescriptionReclamation() }}</p>
+                                
+                            </div>
+                        </a>
+                    </div><!-- End Card Item -->
+                {% endfor %}
+            {% else %}
+                <p>Aucune réclamation trouvée.</p>
+            {% endif %}
+        </div>
+    </div>
+    
+</section>
+
+
+{% endblock %}

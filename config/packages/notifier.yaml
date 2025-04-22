@@ -1,0 +1,4 @@
+framework:
+  notifier:
+    admin_recipients:
+      - { email: admin@example.com }

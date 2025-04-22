@@ -1,0 +1,234 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Modifier avis{% endblock %}
+{% block barreTitre %}
+{% if 'Citoyen' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evénement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listCitoyen') }}">liste des Evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter proposition</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li><a href="contact.html">Contact</a></li>
+                    <li><a href="contact.html">About Us</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Responsable employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}">Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#" ><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}"  class="active">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					 <li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" >Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evénement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listCitoyen') }}">liste des Evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter proposition</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_front') }}" class="active">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% elseif 'Directeur' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" >Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('afficherReclamationFA') }}">les Réclamations</a></li>
+							<li><a href="{{ path('statsReclamationF') }}">Statistiques des Réclamations</a></li>
+							<li><a href="{{ path('chatbot') }}">Chat for help</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#" ><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+							<li><a href="{{ path('statsF') }}">Statistiques des evenements</a></li>
+
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}" class="active">Equipement</a></li>
+					<li><a href="{{ path('tache_listdir') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% endif %}
+
+					
+{% endblock %}
+
+{% block body %}
+<section class="section">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Modifier avis</h5>
+                    <form method="POST" action="{{ path('modifierAvis', {'id': avis.getIdAvis()}) }}" enctype="multipart/form-data">
+                        {{ form_start(form, {'attr': {'class': 'row g-3', 'novalidate': 'novalidate'}}) }}
+
+                        <div class="mb-3">
+                            <label for="inputNote" class="form-label">Note</label>
+                            <!-- Star rating -->
+                            <div class="star-rating">
+                                <i class="star fas fa-star" data-rating="1"></i>
+                                <i class="star fas fa-star" data-rating="2"></i>
+                                <i class="star fas fa-star" data-rating="3"></i>
+                                <i class="star fas fa-star" data-rating="4"></i>
+                                <i class="star fas fa-star" data-rating="5"></i>
+                            </div>
+                            <!-- Hidden field for storing the rating value -->
+                            {{ form_row(form.note_avis, {'attr': {'class': 'hidden-rating'}}) }}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="inputCommentaire" class="form-label">Commentaire</label>
+                            {{ form_widget(form.commentaire_avis, {'attr': {'class': 'form-control'}}) }}
+                        </div>
+                        <input type="hidden" name="id_equipement" value="{{ avis.getEquipement().getIdEquipement() }}">
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">Modifier</button>
+                            <a href="{{ path('avis_show_front', {'id': avis.getEquipement().getIdEquipement()}) }}" class="btn btn-secondary">Annuler</a>
+                        </div>
+                        {{ form_end(form) }}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Style for star rating -->
+<style>
+    /* Default color of star icons */
+    .star {
+        color: gray; /* or any other color */
+    }
+
+    /* Selected color of star icons */
+    .star.selected {
+        color: yellow; /* or any other color */
+    }
+</style>
+
+<!-- JavaScript for star rating -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const stars = document.querySelectorAll(".star");
+
+        stars.forEach((star, index) => {
+            star.addEventListener("click", function() {
+                const rating = this.getAttribute("data-rating");
+
+                // Highlight selected stars and preceding stars
+                stars.forEach((s, i) => {
+                    if (i <= index) {
+                        s.classList.add("selected");
+                    } else {
+                        s.classList.remove("selected");
+                    }
+                });
+
+                // Update the value of the hidden input field
+                const hiddenRating = document.querySelector(".hidden-rating");
+                hiddenRating.value = rating;
+            });
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,240 @@
+{% extends 'base-front.html.twig' %}
+
+{% block title %}Baladity Home{% endblock %}
+
+{% block barreTitre %}
+{% if 'Citoyen' in user.getTypeUser() %}
+<li ><a {# id #}id="navbar_I" href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evénement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listCitoyen') }}">liste des Evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter proposition</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li><a href="contact.html">Contact</a></li>
+                    <li><a href="{{ path('about') }}">About Us</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Responsable employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class="active"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+							<li><a href="{{ path('statsF') }}">Statistiques des evenements</a></li>
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					 <li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+{% elseif 'Employé' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					 <li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualite') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('app_publicite') }}">Afficher Publicité</a></li>
+							<li><a href="{{ path('ajouterPub') }}">Ajouter Publicité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('typeReclamationF') }}">Ajouter Réclamation</a></li>
+							<li><a href="{{ path('afficherReclamationF') }}">Mes réclamations</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evénement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listCitoyen') }}">liste des Evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter proposition</a></li>
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_front') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listfront') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% elseif 'Directeur' in user.getTypeUser() %}
+<li><a href="{{ path('app_main_front') }}" class="active">Home</a></li>
+					<li class="dropdown"><a href="#"><span>Actualité</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_actualiteshowResponsable') }}">Afficher Actualité</a></li>
+							<li><a href="{{ path('ajouterA2') }}">Ajouter Actualité</a></li>
+						</ul>
+					</li>
+					 <li class="dropdown"><a href="#"><span>Reclamation</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('afficherReclamationFA') }}">les Réclamations</a></li>
+							<li><a href="{{ path('statsReclamationF') }}">Statistiques des Réclamations</a></li>
+							<li><a href="{{ path('chatbot') }}">Chat for help</a></li>
+						</ul>
+					</li>
+					<li class="dropdown"><a href="#"><span>Evenement</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class="active"></i></a>
+						<ul>
+							<li><a href="{{ path('evenement_listFront') }}">Liste des evenements</a></li>
+							<li><a href="{{ path('ajouterFront_evenement') }}">Ajouter un evenement</a></li>
+							<li><a href="{{ path('calendar') }}">Calendrier des evenements</a></li>
+							<li><a href="{{ path('ajouter_voteFront') }}">Ajouter une proposition</a></li>
+							<li><a href="{{ path('statsF') }}">Statistiques des evenements</a></li>
+
+
+						</ul>
+					</li>
+					<li><a href="{{ path('equipement_show_responsable') }}">Equipement</a></li>
+					<li><a href="{{ path('tache_listdir') }}">Taches</a></li>
+					<li><a href="{{ path('chatgpt') }}">ChatGpt</a></li>
+					<li class="dropdown"><a href="#"><span>Profile</span> <i
+						class="bi bi-chevron-down dropdown-indicator" class=""></i></a>
+						<ul>
+							<li><a href="{{ path('app_profile_fron') }}">Profile</a></li>
+							<li><a href="{{ path('sign_out') }}">Logout</a></li>
+						</ul>
+					</li>
+
+{% endif %}
+
+					
+{% endblock %}
+
+{% block imageFrontHome %}<img src="{{ asset('front-office/img/LOGOL.png') }}" class="img-fluid mb-3 mb-lg-0" alt="">{% endblock %}
+
+
+{% block slogon %}Là où il fait extrêmement bon de vivre{% endblock %}
+{% block desc %}
+Baladity est une application innovante conçue pour simplifier la gestion des fonctionnalités municipales 
+au sein d'une municipalité. En combinant une interface conviviale avec des fonctionnalités intuitives, 
+Baladity offre aux résidents et aux responsables municipaux un outil efficace pour interagir 
+et coordonner divers aspects de la vie communautaire.
+{% endblock %}
+{% block rest %}
+
+{# code instruction #}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/introjs.min.css">
+<style>
+	/* Custom styles for Intro.js tutorial */
+	.introjs-tooltip {
+		max-width: 400px;
+		background-color: #012545; /* Marine blue color */
+		color: #fff; /* White text color */
+		border-radius: 8px;
+		box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+	}
+	.introjs-arrow {
+		display: none; /* Hide arrow */
+	}
+	.introjs-tooltipbuttons button {
+		background-color: #fff; /* White button background */
+		color: #012545; /* Marine blue button text color */
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/4.1.0/intro.min.js"></script>
+  
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize Intro.js
+            var intro = introJs();
+            intro.setOptions({
+                steps: [
+                    {
+                        intro: " Welcome To Baladity Homepage! ",
+                    },
+                    {
+                        element: '#navbar_I',
+                        intro: "these are nav elements"
+                    },
+					{
+                        element: '#bolbot_I',
+                        intro: "This is balbot, baladity virtual asistant"
+                    },
+					{
+						intro: "Thats it, Have a nice day!",
+                    }
+                ]
+            });
+            intro.start();
+        });
+    </script>
+{# code instruction #}
+
+{% block balbot %}
+
+<section id="call-to-action" style="background-color: #f8f9fa; padding: 80px 0;">
+    <div class="container" data-aos="fade-up">
+        <div class="row justify-content-center">
+            <div  class="col-lg-8 text-center">
+				<img src="{{ asset('back-office/img/chat-botT.gif') }}" {# id #}id="bolbot_I" class="img-fluid mb-3 mb-lg-0" style="max-width: 200px;" alt="Chatbot">
+
+                <h2 style="font-size: 2.5rem; color: #333;">Balbot</h2>
+                <p style="font-size: 1.1rem; color: #666; line-height: 1.6;">
+                    Balbot is a baladity chatbot designed to engage in meaningful conversations, 
+                    providing assistance and support. Powered by advanced AI algorithms, 
+                    Balbot aims to enhance user experience and interaction.
+                </p>
+                <a class="btn btn-primary btn-lg" href="{{ path('balbot') }}" style="margin-top: 20px;">Interact with Balbot</a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+{% endblock %}
